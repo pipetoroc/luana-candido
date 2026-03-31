@@ -1,1 +1,9 @@
 @import "tailwindcss";
+
+@theme inline {
+  --color-primary: #fffdfa;
+  --color-secondary: #f0ece6;
+  --color-accent: #021617;
+
+  --font-primary: "Lexend", sans-serif;
+}
