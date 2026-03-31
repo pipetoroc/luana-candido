@@ -7,10 +7,5 @@ import tailwindcss from '@tailwindcss/vite';
 export default defineConfig({
   vite: {
     plugins: [tailwindcss()]
-  },
-  fonts: [{
-    provider: fontProviders.fontsource(),
-    name: 'Lexend',
-    cssVariable: '--font-primary',
-  }]
+  }
 });

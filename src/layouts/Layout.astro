@@ -1,5 +1,6 @@
 ---
 import '../styles/global.css'
+import '@fontsource-variable/lexend/wght.css'
 ---
 
 <!doctype html>
@@ -12,7 +13,13 @@ import '../styles/global.css'
     <meta name="generator" />
     <title>Luana Candido psicologa</title>
   </head>
-  <body class="font-primary">
+  <body>
     <slot />
   </body>
 </html>
+
+<style is:global>
+  body {
+    font-family: 'Lexend Variable', sans-serif;
+  }
+</style>

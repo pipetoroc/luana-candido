@@ -4,6 +4,10 @@
   --color-primary: #fffdfa;
   --color-secondary: #f0ece6;
   --color-accent: #021617;
+}
 
-  --font-primary: "Lexend", sans-serif;
+@layer base {
+  p {
+    @apply text-sm/snug tracking-tight text-accent font-normal text-pretty;
+  }
 }
