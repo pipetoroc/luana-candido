@@ -1,5 +1,6 @@
 ---
-import Header from '../components/Header.astro'
+import { Image } from 'astro:assets'
+import couch from '../assets/couch.webp'
 ---
 
 <section class="px-4 sm:px-8 py-14 bg-secondary" id="home">
@@ -9,9 +10,9 @@ import Header from '../components/Header.astro'
   </h1>
 
   <figure class="relative mx-auto max-w-screen-xl overflow-hidden rounded-base">
-    <img
+    <Image
       class="w-full h-64 sm:h-80 md:h-96 lg:h-[500px] object-cover object-right"
-      src="../assets/couch.webp"
+      src={couch}
       alt="Imagem de um divã, simbolizando a psicologia"
     />
     <!-- Gradiente en lugar de overlay plano: más elegante y más legible -->
