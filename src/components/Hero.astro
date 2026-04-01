@@ -2,7 +2,7 @@
 import Header from '../components/Header.astro'
 ---
 
-<section class="px-8 py-14 bg-secondary" id="home">
+<!-- <section class="px-8 py-14 bg-secondary" id="home">
   <Header />
   <main>
     <h1 class="pb-14 text-tertiary text-4xl">
@@ -23,4 +23,28 @@ import Header from '../components/Header.astro'
       </p>
     </figure>
   </main>
+</section> -->
+<section class="px-4 sm:px-8 py-14 bg-secondary" id="home">
+  <h1
+    class="mx-auto max-w-screen-xl pb-10 sm:pb-14 text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-normal leading-tight tracking-tight text-tertiary">
+    Avaliação Neuropsicológica e Reabilitação Cognitiva
+  </h1>
+
+  <figure class="relative mx-auto max-w-screen-xl overflow-hidden rounded-base">
+    <img
+      class="w-full h-64 sm:h-80 md:h-96 lg:h-[500px] object-cover object-right"
+      src="/src/assets/couch.webp"
+      alt="Imagem de um divã, simbolizando a psicologia"
+    />
+    <!-- Gradiente en lugar de overlay plano: más elegante y más legible -->
+    <div
+      class="absolute inset-0 bg-gradient-to-t from-black/70 via-black/30 to-transparent">
+    </div>
+    <figcaption
+      class="absolute left-4 sm:left-6 bottom-4 sm:bottom-6 right-4 sm:right-auto sm:max-w-md md:max-w-lg text-primary text-sm sm:text-base leading-snug font-normal text-pretty">
+      Avaliação e intervenção das funções cognitivas e comportamentais,
+      auxiliando no diagnóstico, planejamento terapêutico e melhora da qualidade
+      de vida dos pacientes e suas famílias.
+    </figcaption>
+  </figure>
 </section>
