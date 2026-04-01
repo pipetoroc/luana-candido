@@ -1,70 +1,96 @@
+---
+// Navbar.astro
+---
+
 <header class="h-22">
   <nav class="bg-secondary fixed w-full z-20 top-0 start-0">
     <div
       class="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
-      <a
-        href="https://flowbite.com/"
-        class="flex items-center space-x-3 rtl:space-x-reverse">
+      <a href="/" class="flex items-center space-x-3 rtl:space-x-reverse">
         <img
           src="/src/assets/laosdhasd.webp"
           class="w-40 h-auto"
           alt="logo de Luana Cândido"
         />
       </a>
+
+      <!-- Botón hamburguesa (solo mobile) -->
       <button
-        data-collapse-toggle="navbar-default"
+        id="menu-toggle"
         type="button"
-        class="inline-flex items-center p-2 w-10 h-10 justify-center text-sm text-body rounded-base md:hidden hover:bg-neutral-secondary-soft hover:text-heading focus:outline-none focus:ring-2 focus:ring-neutral-tertiary"
+        class="inline-flex items-center p-2 w-10 h-10 justify-center text-sm text-body rounded-base md:hidden hover:bg-neutral-secondary-soft focus:outline-none focus:ring-2 focus:ring-neutral-tertiary"
         aria-controls="navbar-default"
-        aria-expanded="false">
-        <span class="sr-only">Open main menu</span>
+        aria-expanded="false"
+        aria-label="Abrir menú principal">
+        <!-- Icono hamburguesa -->
         <svg
+          id="icon-open"
           class="w-6 h-6"
           aria-hidden="true"
           xmlns="http://www.w3.org/2000/svg"
-          width="24"
-          height="24"
           fill="none"
-          viewBox="0 0 24 24"
-          ><path
+          viewBox="0 0 24 24">
+          <path
             stroke="currentColor"
             stroke-linecap="round"
             stroke-width="2"
-            d="M5 7h14M5 12h14M5 17h14"></path></svg
-        >
+            d="M5 7h14M5 12h14M5 17h14"></path>
+        </svg>
+
+        <!-- Icono cerrar (X) -->
+        <svg
+          id="icon-close"
+          class="w-6 h-6 hidden"
+          aria-hidden="true"
+          xmlns="http://www.w3.org/2000/svg"
+          fill="none"
+          viewBox="0 0 24 24">
+          <path
+            stroke="currentColor"
+            stroke-linecap="round"
+            stroke-width="2"
+            d="M6 18L18 6M6 6l12 12"></path>
+        </svg>
       </button>
+
+      <!-- Menú de navegación -->
       <div
-        class="overflow-hidden max-h-0 transition-all duration-300 ease-in-out md:max-h-full md:block md:w-auto w-full"
-        id="navbar-default">
+        id="navbar-default"
+        class="overflow-hidden max-h-0 transition-all duration-300 ease-in-out md:!max-h-none md:!overflow-visible md:block md:w-auto w-full"
+        aria-hidden="true">
         <ul
           class="font-medium flex flex-col p-4 md:p-0 mt-4 border border-default rounded-base bg-neutral-secondary-soft md:flex-row md:space-x-8 rtl:space-x-reverse md:mt-0 md:border-0 md:bg-neutral-primary">
           <li>
             <a
-              href="#"
-              class="block py-2 px-3 text-[#0E616D] bg-brand rounded md:bg-transparent md:text-fg-brand md:p-0"
-              aria-current="page">Home</a
-            >
+              href="#home"
+              data-section="home"
+              class="nav-link block py-2 px-3 rounded hover:bg-neutral-tertiary md:hover:bg-transparent md:border-0 md:hover:text-fg-brand md:p-0">
+              Home
+            </a>
           </li>
           <li>
             <a
               href="#about-me"
-              class="block py-2 px-3 text-heading rounded hover:bg-neutral-tertiary md:hover:bg-transparent md:border-0 md:hover:text-fg-brand md:p-0 md:dark:hover:bg-transparent"
-              >Sobre mim</a
-            >
+              data-section="about-me"
+              class="nav-link block py-2 px-3 rounded hover:bg-neutral-tertiary md:hover:bg-transparent md:border-0 md:hover:text-fg-brand md:p-0">
+              Sobre mim
+            </a>
           </li>
           <li>
             <a
               href="#services"
-              class="block py-2 px-3 text-heading rounded hover:bg-neutral-tertiary md:hover:bg-transparent md:border-0 md:hover:text-fg-brand md:p-0 md:dark:hover:bg-transparent"
-              >Serviços</a
-            >
+              data-section="services"
+              class="nav-link block py-2 px-3 rounded hover:bg-neutral-tertiary md:hover:bg-transparent md:border-0 md:hover:text-fg-brand md:p-0">
+              Serviços
+            </a>
           </li>
           <li>
             <a
               href="#footer"
-              class="block py-2 px-3 text-heading rounded hover:bg-neutral-tertiary md:hover:bg-transparent md:border-0 md:hover:text-fg-brand md:p-0 md:dark:hover:bg-transparent"
-              >Contato</a
-            >
+              data-section="footer"
+              class="nav-link block py-2 px-3 rounded hover:bg-neutral-tertiary md:hover:bg-transparent md:border-0 md:hover:text-fg-brand md:p-0">
+              Contato
+            </a>
           </li>
         </ul>
       </div>
@@ -73,36 +99,139 @@
 </header>
 
 <script>
-  document.addEventListener('DOMContentLoaded', () => {
-    const button = document.querySelector('[data-collapse-toggle]')
-    const targetId = button?.getAttribute('data-collapse-toggle')
-    const menu = document.getElementById(targetId)
+  // =============================================
+  // 1. MENÚ MÓVIL
+  // =============================================
+  const toggle = document.getElementById('menu-toggle')
+  const menu = document.getElementById('navbar-default')
+  const iconOpen = document.getElementById('icon-open')
+  const iconClose = document.getElementById('icon-close')
 
-    if (!button || !menu) return
+  if (!toggle || !menu) throw new Error('Navbar elements not found')
 
-    let isOpen = false
+  let isOpen = false
 
-    // 🔘 Toggle con el botón
-    button.addEventListener('click', () => {
-      if (isOpen) {
-        menu.style.maxHeight = '0px'
+  const isDesktop = () => window.matchMedia('(min-width: 768px)').matches
+
+  function openMenu() {
+    menu.style.maxHeight = menu.scrollHeight + 'px'
+    menu.setAttribute('aria-hidden', 'false')
+    toggle.setAttribute('aria-expanded', 'true')
+    iconOpen?.classList.add('hidden')
+    iconClose?.classList.remove('hidden')
+    isOpen = true
+  }
+
+  function closeMenu() {
+    menu.style.maxHeight = '0px'
+    menu.setAttribute('aria-hidden', 'true')
+    toggle.setAttribute('aria-expanded', 'false')
+    iconOpen?.classList.remove('hidden')
+    iconClose?.classList.add('hidden')
+    isOpen = false
+  }
+
+  toggle.addEventListener('click', () => {
+    isOpen ? closeMenu() : openMenu()
+  })
+
+  menu.querySelectorAll('a').forEach((link) => {
+    link.addEventListener('click', () => {
+      if (!isDesktop()) closeMenu()
+    })
+  })
+
+  window.addEventListener('resize', () => {
+    if (isDesktop() && isOpen) {
+      closeMenu()
+      menu.style.maxHeight = ''
+    }
+  })
+
+  document.addEventListener('click', (e) => {
+    if (
+      !isDesktop() &&
+      isOpen &&
+      !menu.contains(e.target as Node) &&
+      !toggle.contains(e.target as Node)
+    ) {
+      closeMenu()
+    }
+  })
+
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && isOpen) {
+      closeMenu()
+      toggle.focus()
+    }
+  })
+
+  // =============================================
+  // 2. ACTIVE SECTION — IntersectionObserver
+  // =============================================
+
+  // Para mobile el activo tiene fondo; para desktop solo color
+  // Usamos un atributo data en lugar de clases hardcodeadas en el HTML
+  // para poder alternar limpiamente desde JS.
+
+  const navLinks =
+    document.querySelectorAll<HTMLAnchorElement>('a[data-section]')
+
+  function setActive(sectionId: string) {
+    navLinks.forEach((link) => {
+      const isActive = link.dataset.section === sectionId
+
+      // aria-current para accesibilidad
+      link.setAttribute('aria-current', isActive ? 'page' : 'false')
+
+      if (isActive) {
+        link.classList.add('text-accent')
       } else {
-        menu.style.maxHeight = menu.scrollHeight + 'px'
+        link.classList.remove('text-accent')
       }
-
-      isOpen = !isOpen
-      button.setAttribute('aria-expanded', String(isOpen))
     })
+  }
 
-    // 🔗 Cerrar al hacer click en un link
-    const links = menu.querySelectorAll('a')
+  // Mapa sectionId → cuánto está visible (ratio)
+  const visibilityMap = new Map<string, number>()
 
-    links.forEach((link) => {
-      link.addEventListener('click', () => {
-        menu.style.maxHeight = '0px'
-        isOpen = false
-        button.setAttribute('aria-expanded', 'false')
+  // rootMargin "-40% 0px -40% 0px" hace que solo el centro del viewport
+  // cuente como "visible", lo que da un highlight más preciso en landing pages
+  const observer = new IntersectionObserver(
+    (entries) => {
+      entries.forEach((entry) => {
+        visibilityMap.set(entry.target.id, entry.intersectionRatio)
       })
-    })
+
+      // La sección activa es la que tiene mayor ratio visible
+      let maxRatio = 0
+      let activeSectionId = ''
+
+      visibilityMap.forEach((ratio, id) => {
+        if (ratio > maxRatio) {
+          maxRatio = ratio
+          activeSectionId = id
+        }
+      })
+
+      if (activeSectionId) setActive(activeSectionId)
+    },
+    {
+      // Recorta el área de observación al centro del viewport
+      rootMargin: '-30% 0px -20% 0px',
+      // Reporta cambios con granularidad de 5%
+      threshold: Array.from({ length: 21 }, (_, i) => i * 0.05)
+    }
+  )
+
+  // Observar todas las secciones que tienen un link en el nav
+  navLinks.forEach((link) => {
+    const id = link.dataset.section
+    if (!id) return
+    const section = document.getElementById(id)
+    if (section) {
+      visibilityMap.set(id, 0)
+      observer.observe(section)
+    }
   })
 </script>

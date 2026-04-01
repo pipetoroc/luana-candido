@@ -3,12 +3,13 @@
 @theme inline {
   --color-primary: #fffdfa;
   --color-secondary: #f0ece6;
-  --color-accent: #021617;
+  --color-tertiary: #021617;
+  --color-accent: #0E616D;
 }
 
 @layer base {
   p,li {
-    @apply text-sm/snug tracking-tight text-accent font-normal text-pretty;
+    @apply text-sm/snug tracking-tight text-tertiary font-normal text-pretty;
   }
 
 }
