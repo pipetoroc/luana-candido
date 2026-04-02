@@ -1,6 +1,7 @@
 ---
 import { Image } from 'astro:assets'
 import profile from '../assets/profile.webp'
+import Button from './Button.astro'
 ---
 
 <section class="px-4 sm:px-8 py-14" id="about-me">
@@ -39,13 +40,7 @@ import profile from '../assets/profile.webp'
         </p>
       </div>
 
-      <a
-        class="mt-8 w-full md:w-fit px-6 py-3 text-sm text-tertiary text-center bg-secondary rounded-4xl inline-block"
-        href="https://wa.me/573183004070?text=Hola%20quiero%20más%20información"
-        rel="noopener noreferrer"
-        target="_blank">
-        AGENDE UMA CONSULTA
-      </a>
+      <Button class="mt-8 bg-secondary text-tertiary hover:brightness-95" />
     </div>
   </div>
 </section>
