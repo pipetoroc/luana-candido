@@ -4,11 +4,11 @@ import profile from '../assets/profile.webp'
 import Button from './Button.astro'
 ---
 
-<section class="px-4 sm:px-8 py-14" id="about-me">
+<section class="px-4 sm:px-8 py-14 bg-primary" id="about-me">
   <div
-    class="flex flex-col mx-auto max-w-screen-xl md:flex-row md:gap-12 lg:gap-16 md:items-start">
+    class="flex flex-col mx-auto max-w-screen-xl md:flex-row md:gap-12 lg:gap-16 md:items-start lg:items-center">
     <!-- Foto: ancho fijo a la izquierda en tablet+ -->
-    <figure class="pb-8 md:pb-0 md:w-2/5 md:shrink-0">
+    <figure class="pb-8 md:pb-0 md:w-1/2 md:shrink-0">
       <Image
         class="w-full h-auto rounded-base object-cover"
         src={profile}

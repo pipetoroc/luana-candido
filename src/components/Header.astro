@@ -4,19 +4,19 @@ import logo from '../assets/logo.webp'
 import Button from './Button.astro'
 ---
 
-<header class="w-full h-18">
+<header class="w-full h-30">
   <nav class="fixed top-0 start-0 z-20 w-full bg-secondary">
     <div
-      class="flex flex-wrap items-center justify-between mx-auto max-w-screen-xl h-18 p-4 sm:px-8 xl:px-0">
+      class="flex flex-wrap items-center justify-between mx-auto max-w-screen-xl h-30 p-4 sm:px-8 xl:px-0">
       <a href="/" class="flex items-center space-x-3 rtl:space-x-reverse">
-        <Image src={logo} class="w-50 h-auto" alt="logo de Luana Cândido" />
+        <Image src={logo} class="w-90 h-auto" alt="logo de Luana Cândido" />
       </a>
 
       <!-- Botón hamburguesa (solo mobile) -->
       <button
         id="menu-toggle"
         type="button"
-        class="inline-flex items-center justify-end w-10 h-10 text-sm text-body rounded-base lg:hidden hover:bg-neutral-secondary-soft"
+        class="inline-flex items-center justify-end w-10 h-10 text-sm lg:hidden"
         aria-controls="navbar-default"
         aria-expanded="false"
         aria-label="Abrir menú principal">
@@ -54,18 +54,17 @@ import Button from './Button.astro'
       <!-- Menú de navegación -->
       <div
         id="navbar-default"
-        class="fixed inset-0 z-10 flex flex-col items-center justify-center w-full h-screen
-bg-secondary/80 backdrop-blur-md
+        class="fixed inset-0 z-10 flex flex-col items-center justify-center w-full h-screen bg-secondary/80 backdrop-blur-md
 transition-all duration-500 ease-out transform scale-95 opacity-0 pointer-events-none
 lg:static lg:opacity-100 lg:pointer-events-auto lg:h-auto lg:flex lg:w-auto lg:bg-transparent lg:scale-100"
         aria-hidden="true">
         <ul
-          class="font-medium flex flex-col items-center p-4 lg:p-0 mt-4 border border-default rounded-base bg-neutral-secondary-soft lg:flex-row lg:space-x-8 rtl:space-x-reverse lg:mt-0 lg:border-0 lg:bg-neutral-primary">
+          class="font-medium flex flex-col items-center p-4 lg:p-0 mt-4 border lg:flex-row lg:space-x-8 rtl:space-x-reverse lg:mt-0 lg:border-0">
           <li>
             <a
               href="#home"
               data-section="home"
-              class="block py-2 px-3 text-2xl rounded hover:bg-neutral-tertiary lg:hover:bg-transparent lg:border-0 lg:hover:text-fg-brand lg:p-0 lg:text-sm">
+              class="block py-2 px-3 text-2xl rounded lg:p-0 lg:text-sm">
               Home
             </a>
           </li>
@@ -73,7 +72,7 @@ lg:static lg:opacity-100 lg:pointer-events-auto lg:h-auto lg:flex lg:w-auto lg:b
             <a
               href="#about-me"
               data-section="about-me"
-              class="block py-2 px-3 text-2xl rounded hover:bg-neutral-tertiary lg:hover:bg-transparent lg:border-0 lg:hover:text-fg-brand lg:p-0 lg:text-sm">
+              class="block py-2 px-3 text-2xl rounded lg:p-0 lg:text-sm">
               Sobre mim
             </a>
           </li>
@@ -81,7 +80,7 @@ lg:static lg:opacity-100 lg:pointer-events-auto lg:h-auto lg:flex lg:w-auto lg:b
             <a
               href="#services"
               data-section="services"
-              class="block py-2 px-3 text-2xl rounded hover:bg-neutral-tertiary lg:hover:bg-transparent lg:border-0 lg:hover:text-fg-brand lg:p-0 lg:text-sm">
+              class="block py-2 px-3 text-2xl rounded lg:p-0 lg:text-sm">
               Serviços
             </a>
           </li>
@@ -89,7 +88,7 @@ lg:static lg:opacity-100 lg:pointer-events-auto lg:h-auto lg:flex lg:w-auto lg:b
             <a
               href="#contact"
               data-section="contact"
-              class="block py-2 px-3 text-2xl rounded hover:bg-neutral-tertiary lg:hover:bg-transparent lg:border-0 lg:hover:text-fg-brand lg:p-0 lg:text-sm">
+              class="block py-2 px-3 text-2xl rounded lg:p-0 lg:text-sm">
               Contato
             </a>
           </li>
