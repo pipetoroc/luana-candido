@@ -1,15 +1,15 @@
 ---
 import { Image } from 'astro:assets'
-import logo from '../assets/logo.webp'
+import Logo from '../assets/logolu.svg'
 import Button from './Button.astro'
 ---
 
-<header class="w-full h-30">
-  <nav class="w-full bg-secondary">
+<header class="w-full h-30 dark">
+  <nav class="w-full bg-secondary dark:bg-tertiary">
     <div
       class="flex flex-wrap items-center justify-between mx-auto max-w-screen-2xl h-30 p-4 sm:px-8 2xl:p-0">
       <a href="/" class="flex items-center space-x-3 rtl:space-x-reverse">
-        <Image src={logo} class="w-90 h-auto" alt="logo de Luana Cândido" />
+        <Logo />
       </a>
 
       <!-- Botón hamburguesa (solo mobile) -->
@@ -54,7 +54,7 @@ import Button from './Button.astro'
       <!-- Menú de navegación -->
       <div
         id="navbar-default"
-        class="fixed inset-0 z-10 flex flex-col items-center justify-center w-full h-screen bg-secondary/95 backdrop-blur-xl transition-all duration-500 ease-out transform scale-95 opacity-0 pointer-events-none lg:static lg:opacity-100 lg:pointer-events-auto lg:h-auto lg:flex lg:w-auto lg:bg-transparent lg:scale-100"
+        class="fixed inset-0 z-10 flex flex-col items-center justify-center w-full h-screen bg-secondary/95 dark:bg-tertiary/95 backdrop-blur-xl transition-all duration-500 ease-out transform scale-95 opacity-0 pointer-events-none lg:static lg:opacity-100 lg:pointer-events-auto lg:h-auto lg:flex lg:w-auto lg:bg-transparent lg:scale-100"
         aria-hidden="true">
         <ul
           class="font-medium flex flex-col items-center p-4 mt-4 space-y-6 lg:space-y-0 lg:p-0 lg:flex-row lg:space-x-8 rtl:space-x-reverse lg:mt-0">
@@ -62,7 +62,7 @@ import Button from './Button.astro'
             <a
               href="#about-me"
               data-section="about-me"
-              class="block py-2 px-3 text-2xl rounded lg:p-0 lg:text-sm link-underline transition-colors duration-300 hover:text-accent">
+              class="block py-2 px-3 text-2xl rounded lg:p-0 lg:text-sm link-underline transition-colors duration-300 hover:text-accent dark:hover:text-dark-accent">
               Sobre mim
             </a>
           </li>
@@ -70,7 +70,7 @@ import Button from './Button.astro'
             <a
               href="#services"
               data-section="services"
-              class="block py-2 px-3 text-2xl rounded lg:p-0 lg:text-sm link-underline transition-colors duration-300 hover:text-accent">
+              class="block py-2 px-3 text-2xl rounded lg:p-0 lg:text-sm link-underline transition-colors duration-300 hover:text-accent dark:hover:text-dark-accent">
               Serviços
             </a>
           </li>
@@ -78,13 +78,13 @@ import Button from './Button.astro'
             <a
               href="#contact"
               data-section="contact"
-              class="block py-2 px-3 text-2xl rounded lg:p-0 lg:text-sm link-underline transition-colors duration-300 hover:text-accent">
+              class="block py-2 px-3 text-2xl rounded lg:p-0 lg:text-sm link-underline transition-colors duration-300 hover:text-accent dark:hover:text-dark-accent">
               Contato
             </a>
           </li>
           <li>
             <Button
-              class="mt-10 bg-black text-primary hover:bg-black/80 lg:mt-0"
+              class="mt-10 bg-black text-primary hover:bg-black/80 lg:mt-0 dark:bg-secondary dark:text-tertiary dark:hover:bg-dark-accent"
             />
           </li>
         </ul>
@@ -199,9 +199,9 @@ import Button from './Button.astro'
       link.setAttribute('aria-current', isActive ? 'page' : 'false')
 
       if (isActive) {
-        link.classList.add('text-accent')
+        link.classList.add('text-accent dark:text-dark-accent')
       } else {
-        link.classList.remove('text-accent')
+        link.classList.remove('text-accent dark:text-dark-accent')
       }
     })
   }

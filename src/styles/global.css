@@ -5,11 +5,15 @@
   --color-secondary: #f0ece6;
   --color-tertiary: #021617;
   --color-accent: #0E616D;
+
+  --color-dark-primary: #031d1e;
+  --color-dark-secondary: #082f34;
+  --color-dark-accent: #bcd06f;
 }
 
 @layer base {
   p,li {
-    @apply text-sm/snug tracking-tight text-tertiary font-normal text-pretty;
+    @apply text-sm/snug tracking-tight text-tertiary font-normal text-pretty dark:text-secondary;
   }
 }
 
@@ -35,4 +39,8 @@
   .link-underline:hover::after {
     transform: scaleX(1);
   }
+}
+
+.dark {
+  --color-accent: #bcd06f;
 }

@@ -4,7 +4,9 @@ import profile from '../assets/profile.webp'
 import Button from './Button.astro'
 ---
 
-<section class="px-4 sm:px-8 py-14 bg-primary" id="about-me">
+<section
+  class="px-4 sm:px-8 py-14 bg-primary dark:bg-dark-primary"
+  id="about-me">
   <div
     class="flex flex-col mx-auto max-w-screen-2xl md:flex-row md:gap-12 lg:gap-16 md:items-start lg:items-center">
     <!-- Foto: ancho fijo a la izquierda en tablet+ -->
@@ -23,7 +25,7 @@ import Button from './Button.astro'
       </h2>
 
       <div class="space-y-4 text-body">
-        <p class="text-base font-semibold">
+        <p class="text-base font-semibold dark:text-primary">
           Sou psicóloga e especialista em neuropsicologia pelo Hospital das
           Clínicas da faculdade de Medicina da USP (HCFMUSP)
         </p>
@@ -40,7 +42,9 @@ import Button from './Button.astro'
         </p>
       </div>
 
-      <Button class="mt-8 bg-secondary text-tertiary hover:brightness-95" />
+      <Button
+        class="mt-8 bg-secondary text-tertiary hover:brightness-95 dark:hover:bg-dark-accent"
+      />
     </div>
   </div>
 </section>
