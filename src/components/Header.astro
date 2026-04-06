@@ -5,7 +5,7 @@ import Button from './Button.astro'
 ---
 
 <header class="w-full h-30">
-  <nav class="fixed top-0 inset-s-0 z-20 w-full bg-secondary">
+  <nav class="w-full bg-secondary">
     <div
       class="flex flex-wrap items-center justify-between mx-auto max-w-screen-2xl h-30 p-4 sm:px-8 2xl:p-0">
       <a href="/" class="flex items-center space-x-3 rtl:space-x-reverse">
@@ -38,7 +38,7 @@ import Button from './Button.astro'
         <!-- Icono cerrar (X) -->
         <svg
           id="icon-close"
-          class="w-6 h-6 hidden z-20"
+          class="fixed w-6 h-6 hidden z-20"
           aria-hidden="true"
           xmlns="http://www.w3.org/2000/svg"
           fill="none"
@@ -58,14 +58,6 @@ import Button from './Button.astro'
         aria-hidden="true">
         <ul
           class="font-medium flex flex-col items-center p-4 mt-4 space-y-6 lg:space-y-0 lg:p-0 lg:flex-row lg:space-x-8 rtl:space-x-reverse lg:mt-0">
-          <li>
-            <a
-              href="#home"
-              data-section="home"
-              class="block py-2 px-3 text-2xl rounded lg:p-0 lg:text-sm link-underline transition-colors duration-300 hover:text-accent">
-              Home
-            </a>
-          </li>
           <li>
             <a
               href="#about-me"
