@@ -190,64 +190,64 @@ import Button from './Button.astro'
   // Usamos un atributo data en lugar de clases hardcodeadas en el HTML
   // para poder alternar limpiamente desde JS.
 
-  const navLinks =
-    document.querySelectorAll<HTMLAnchorElement>('a[data-section]')
+  // const navLinks =
+  //   document.querySelectorAll<HTMLAnchorElement>('a[data-section]')
 
-  function setActive(sectionId: string) {
-    navLinks.forEach((link) => {
-      const isActive = link.dataset.section === sectionId
+  // function setActive(sectionId: string) {
+  //   navLinks.forEach((link) => {
+  //     const isActive = link.dataset.section === sectionId
 
-      // aria-current para accesibilidad
-      link.setAttribute('aria-current', isActive ? 'page' : 'false')
+  //     // aria-current para accesibilidad
+  //     link.setAttribute('aria-current', isActive ? 'page' : 'false')
 
-      if (isActive) {
-        link.classList.add('text-accent dark:text-dark-accent')
-      } else {
-        link.classList.remove('text-accent dark:text-dark-accent')
-      }
-    })
-  }
+  //     if (isActive) {
+  //       link.classList.add('text-accent dark:text-dark-accent')
+  //     } else {
+  //       link.classList.remove('text-accent dark:text-dark-accent')
+  //     }
+  //   })
+  // }
 
-  // Mapa sectionId → cuánto está visible (ratio)
-  const visibilityMap = new Map<string, number>()
+  // // Mapa sectionId → cuánto está visible (ratio)
+  // const visibilityMap = new Map<string, number>()
 
-  // rootMargin "-40% 0px -40% 0px" hace que solo el centro del viewport
-  // cuente como "visible", lo que da un highlight más preciso en landing pages
-  const observer = new IntersectionObserver(
-    (entries) => {
-      entries.forEach((entry) => {
-        visibilityMap.set(entry.target.id, entry.intersectionRatio)
-      })
+  // // rootMargin "-40% 0px -40% 0px" hace que solo el centro del viewport
+  // // cuente como "visible", lo que da un highlight más preciso en landing pages
+  // const observer = new IntersectionObserver(
+  //   (entries) => {
+  //     entries.forEach((entry) => {
+  //       visibilityMap.set(entry.target.id, entry.intersectionRatio)
+  //     })
 
-      // La sección activa es la que tiene mayor ratio visible
-      let maxRatio = 0
-      let activeSectionId = ''
+  //     // La sección activa es la que tiene mayor ratio visible
+  //     let maxRatio = 0
+  //     let activeSectionId = ''
 
-      visibilityMap.forEach((ratio, id) => {
-        if (ratio > maxRatio) {
-          maxRatio = ratio
-          activeSectionId = id
-        }
-      })
+  //     visibilityMap.forEach((ratio, id) => {
+  //       if (ratio > maxRatio) {
+  //         maxRatio = ratio
+  //         activeSectionId = id
+  //       }
+  //     })
 
-      if (activeSectionId) setActive(activeSectionId)
-    },
-    {
-      // Recorta el área de observación al centro del viewport
-      rootMargin: '-30% 0px -20% 0px',
-      // Reporta cambios con granularidad de 5%
-      threshold: Array.from({ length: 21 }, (_, i) => i * 0.05)
-    }
-  )
+  //     if (activeSectionId) setActive(activeSectionId)
+  //   },
+  //   {
+  //     // Recorta el área de observación al centro del viewport
+  //     rootMargin: '-30% 0px -20% 0px',
+  //     // Reporta cambios con granularidad de 5%
+  //     threshold: Array.from({ length: 21 }, (_, i) => i * 0.05)
+  //   }
+  // )
 
-  // Observar todas las secciones que tienen un link en el nav
-  navLinks.forEach((link) => {
-    const id = link.dataset.section
-    if (!id) return
-    const section = document.getElementById(id)
-    if (section) {
-      visibilityMap.set(id, 0)
-      observer.observe(section)
-    }
-  })
+  // // Observar todas las secciones que tienen un link en el nav
+  // navLinks.forEach((link) => {
+  //   const id = link.dataset.section
+  //   if (!id) return
+  //   const section = document.getElementById(id)
+  //   if (section) {
+  //     visibilityMap.set(id, 0)
+  //     observer.observe(section)
+  //   }
+  // })
 </script>

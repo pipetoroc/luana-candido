@@ -1,5 +1,6 @@
 ---
-import CloseAcordion from './icons/CloseAcordion.astro'
+import Acordion from './Acordion.astro'
+import CloseAcordionIcon from './icons/CloseAcordionIcon.astro'
 ---
 
 <section class="py-14 px-8 dark:bg-dark-secondary" id="services">
@@ -9,11 +10,9 @@ import CloseAcordion from './icons/CloseAcordion.astro'
       Serviços que ofereço
     </h2>
 
-    <!-- Acordeón 1: Avaliação neuropsicológica -->
     <div
-      class="space-y-0 timeline-view timeline-view animate-fade-in-left animate-range-[entry_20%_contain_40%]">
-      <div
-        class="accordion-item max-w-screen-2xl mx-auto border-t border-default">
+      class="space-y-0 timeline-view animate-fade-in-left animate-range-[entry_20%_contain_40%]">
+      <Acordion>
         <button
           class="accordion-trigger w-full flex items-center justify-between py-4 text-left"
           aria-expanded="false">
@@ -21,7 +20,7 @@ import CloseAcordion from './icons/CloseAcordion.astro'
             class="text-2xl font-normal tracking-tight lg:text-3xl capitalize">
             avaliação neuropsicológica
           </h2>
-          <CloseAcordion />
+          <CloseAcordionIcon />
         </button>
 
         <div
@@ -69,8 +68,8 @@ import CloseAcordion from './icons/CloseAcordion.astro'
               </h4>
               <p class="pb-2">
                 R$ 160 - Primeira consulta de Entrevista Clínica (Anamnese) para
-                verificar a demanda de avaliação Neuropsicológica Avaliação
-                Neuropsicológica
+                verificar a demanda de avaliação Neuropsicológica - Atendimento
+                online.
               </p>
               <h4
                 class="pb-2 text-sm/tight font-bold tracking-tight capitalize">
@@ -78,7 +77,8 @@ import CloseAcordion from './icons/CloseAcordion.astro'
               </h4>
               <p class="pb-2">
                 R$ 2.000 - O procedimento completo com aplicação dos testes,
-                devolutiva e entrega do laudo neuropsicológico.
+                devolutiva e entrega do laudo neuropsicológico - Atendimento
+                híbrido.
               </p>
               <h4
                 class="pb-2 text-sm/tight font-bold tracking-tight capitalize">
@@ -90,11 +90,9 @@ import CloseAcordion from './icons/CloseAcordion.astro'
             </div>
           </div>
         </div>
-      </div>
+      </Acordion>
 
-      <!-- Acordeón 2: Reabilitação Cognitiva -->
-      <div
-        class="accordion-item max-w-screen-2xl mx-auto border-t border-default timeline-view animate-fade-in-left animate-range-[entry_20%_cover_40%]">
+      <Acordion>
         <button
           class="accordion-trigger w-full flex items-center justify-between py-4 text-left"
           aria-expanded="false">
@@ -102,7 +100,7 @@ import CloseAcordion from './icons/CloseAcordion.astro'
             class="text-2xl font-normal tracking-tight lg:text-3xl capitalize">
             reabilitação cognitiva
           </h2>
-          <CloseAcordion />
+          <CloseAcordionIcon />
         </button>
 
         <div
@@ -164,7 +162,7 @@ import CloseAcordion from './icons/CloseAcordion.astro'
             </div>
           </div>
         </div>
-      </div>
+      </Acordion>
 
       <!-- Borde inferior -->
       <div class="border-t max-w-screen-2xl mx-auto border-default"></div>
